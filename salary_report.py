@@ -12,7 +12,9 @@
 #!/usr/bin/python
 import MySQLdb
 from datetime import datetime
- 
+from dateutil.relativedelta import *
+
+# database connection string 
 db = MySQLdb.connect(host="localhost",  # your host 
                      user="root",       # username
                      passwd="password",     # password
@@ -20,6 +22,7 @@ db = MySQLdb.connect(host="localhost",  # your host
 
 # date to start fiscal quarters
 start_date = '1980-10-01'
+end_date = '2020-12-31'
  
 # Create a Cursor object to execute queries.
 cur = db.cursor()
@@ -34,10 +37,14 @@ for department in cur.fetchall():
     dept_num = department[0]
     dept_employees_cur.execute("SELECT * FROM dept_emp WHERE dept_no=\'" + dept_num + "\'")
 
-    for dept_emp in dept_employees_cur.fetchall():
-	if (datetime.strptime(str(dept_emp[2]), "%Y-%m-%d") >= datetime.strptime('1994-10-01', "%Y-%m-%d") and datetime.strptime(str(dept_emp[3]), "%Y-%m-%d") <= datetime.strptime('1998-12-31', "%Y-%m-%d")):
-	#if datetime.strptime(str(dept_emp[3]), "%Y-%m-%d") <= datetime.strptime('2000-12-31', "%Y-%m-%d"):
-            print dept_emp[0], " ", dept_emp[1], " ", dept_emp[2], " ", dept_emp[3]
+    start = datetime.strptime(start_date, "%Y-%m-%d")
+    end =datetime.strptime(end_date, "%Y-%m-%d")
+    while start <= end:
+        print start
+        start += relativedelta(months=+3)
+
+	#if (datetime.strptime(str(dept_emp[2]), "%Y-%m-%d") <= datetime.strptime(start, "%Y-%m-%d") and datetime.strptime(str(dept_emp[3]), "%Y-%m-%d") >= datetime.strptime(end, "%Y-%m-%d")):
+         #   print dept_emp[0], " ", dept_emp[1], " ", dept_emp[2], " ", dept_emp[3]
 
 
 
