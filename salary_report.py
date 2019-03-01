@@ -36,17 +36,22 @@ for department in cur.fetchall():
     dept_employees_cur = db.cursor()
     dept_num = department[0]
     dept_employees_cur.execute("SELECT * FROM dept_emp WHERE dept_no=\'" + dept_num + "\'")
+    employees = dept_employees_cur.fetchall()
 
     start = datetime.strptime(start_date, "%Y-%m-%d")
     end =datetime.strptime(end_date, "%Y-%m-%d")
     while start <= end:
-        print start
-        start += relativedelta(months=+3)
+        print "Quarter: ", start
+        three_months_later = start + relativedelta(months=+3)
 
 	#if (datetime.strptime(str(dept_emp[2]), "%Y-%m-%d") <= datetime.strptime(start, "%Y-%m-%d") and datetime.strptime(str(dept_emp[3]), "%Y-%m-%d") >= datetime.strptime(end, "%Y-%m-%d")):
-         #   print dept_emp[0], " ", dept_emp[1], " ", dept_emp[2], " ", dept_emp[3]
+	
+        # iterate through list of employees
+        for dept_emp in employees:
+            if (datetime.strptime(str(dept_emp[2]), "%Y-%m-%d") <= start and datetime.strptime(str(dept_emp[3]), "%Y-%m-%d") >= end):
+                print dept_emp[0], " ", dept_emp[1], " ", dept_emp[2], " ", dept_emp[3]
 
-
+        start = three_months_later
 
 
 def is_between_dates(from_date, to_date):
