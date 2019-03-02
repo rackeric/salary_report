@@ -21,39 +21,65 @@ db = MySQLdb.connect(host="localhost",  # your host
                      db="employees")   # name of the database
 
 # date to start fiscal quarters
-start_date = '1980-10-01'
-end_date = '2020-12-31'
+start_date = '1985-10-01'
+end_date = '2002-10-01'
  
 # Create a Cursor object to execute queries.
-cur = db.cursor()
+depts_cur = db.cursor()
  
 # Select data from table using SQL query.
-cur.execute("SELECT * FROM departments")
- 
-# get deparments list
-for department in cur.fetchall():
-    print department[1]
+depts_cur.execute("SELECT * FROM departments")
+
+# query db for employees in department
+def get_dept_employees(department):
     dept_employees_cur = db.cursor()
     dept_num = department[0]
     dept_employees_cur.execute("SELECT * FROM dept_emp WHERE dept_no=\'" + dept_num + "\'")
-    employees = dept_employees_cur.fetchall()
+    return dept_employees_cur.fetchall()
 
-    start = datetime.strptime(start_date, "%Y-%m-%d")
-    end =datetime.strptime(end_date, "%Y-%m-%d")
+# query db for employee salary from employeeID
+def get_employee_salary(emp_id, start_date, end_date):
+    # TODO: what if find multiple salaries for that time
+    employee_salary_cur = db.cursor()
+    employee_salary_cur.execute("SELECT * FROM salaries WHERE emp_no=\'" + str(emp_id) + "\' AND to_date BETWEEN \'" + str(start_date) + "\' AND \'" + str(end_date) + "\'")
+    return employee_salary_cur.fetchall()
+ 
+# get and loop through departments list
+for department in depts_cur.fetchall():
+
+    # get employees for this department
+    employees = get_dept_employees(department)
+
+    # set local start and end dates so to preserve master start_date and end_date for use on next for loop iteration
+    start = datetime.strptime(start_date, "%Y-%m-%d").date()
+    end = datetime.strptime(end_date, "%Y-%m-%d").date()
+
+    # loop from local start to end dates, adding 3 months each iteration for fiscal quarters
     while start <= end:
-        print "Quarter: ", start
+
+        # get 3 month later date
         three_months_later = start + relativedelta(months=+3)
 
-	#if (datetime.strptime(str(dept_emp[2]), "%Y-%m-%d") <= datetime.strptime(start, "%Y-%m-%d") and datetime.strptime(str(dept_emp[3]), "%Y-%m-%d") >= datetime.strptime(end, "%Y-%m-%d")):
-	
+        # start a counter to add up salaries for this quarter and department
+        department_quartly_salary_total = 0
+        
         # iterate through list of employees
         for dept_emp in employees:
-            if (datetime.strptime(str(dept_emp[2]), "%Y-%m-%d") <= start and datetime.strptime(str(dept_emp[3]), "%Y-%m-%d") >= end):
-                print dept_emp[0], " ", dept_emp[1], " ", dept_emp[2], " ", dept_emp[3]
+            # if employee from_date is before or on local start date AND employee to_date is greater or equal than local end date
+            if (dept_emp[2] <= start and dept_emp[3] >= end):
+                emp_salary = get_employee_salary(dept_emp[0], start, three_months_later)
+                if emp_salary:
+                    # add to department salary counter for this quarter
+                    department_quartly_salary_total += int(emp_salary[0][1])
 
+        # print department name, quarter start date and salary total for this quarter
+        print department[1], start, department_quartly_salary_total
+        
+        # last, set start counter equal to 3 months later
         start = three_months_later
 
+        # end of while loop
 
-def is_between_dates(from_date, to_date):
-    # see if between 2 dates
-    return true;
+# end of for loop
+
+# end of script
