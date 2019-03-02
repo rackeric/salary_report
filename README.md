@@ -6,5 +6,9 @@ Install:
 yum install MySQL-python
 yum install python-dateutil
 
+Import employees db in to MySQL database:
+mysql < employees.sql
+
+
 # To Run
 python salary_report.py
