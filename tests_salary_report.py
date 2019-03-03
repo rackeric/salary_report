@@ -40,4 +40,4 @@ def test_run_salary_report(mysql_mock):
 test_get_dept_employees()
 test_get_employee_salary()
 test_get_departments()
-#test_run_salary_report()
+test_run_salary_report()
