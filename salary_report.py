@@ -14,7 +14,6 @@ import MySQLdb
 from datetime import datetime
 from dateutil.relativedelta import *
 
-
 # date to start fiscal quarters
 start_date = '1985-10-01'
 end_date = '2002-10-01'
@@ -24,7 +23,6 @@ db = MySQLdb.connect(host="localhost",  # your host
                      user="root",       # username
                      passwd="password", # password
                      db="employees")    # name of the database
-
 
 # function: execute mysql queries
 def exec_mysql(query):

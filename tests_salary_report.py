@@ -1,6 +1,3 @@
-#from unittest import mock
-#from unittest.mock import MagicMock
-#from mock import MagicMock
 import mock
 from salary_report import get_dept_employees, get_employee_salary, run_salary_report, get_departments, department_report, print_quarter_report, run_salary_report
 
