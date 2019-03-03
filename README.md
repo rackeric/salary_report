@@ -29,5 +29,6 @@ This takes around 45 minutes to run on a Rackspace Public Cloud server using 1 G
 
 # To Test
 Test check functions for expected SQL queries and report function for expected output.
+
     pip install pytest unittest mock
     pytest -vvv test_salary_report.py 
