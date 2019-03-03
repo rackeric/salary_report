@@ -19,4 +19,4 @@ Import employees db in to MySQL database:
 
 # To Test
     pip install pytest unittest mock
-    pytest -vvv tests_salary_report.py 
+    pytest -vvv test_salary_report.py 
