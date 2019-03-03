@@ -4,16 +4,12 @@ This script is used to generate a report showing how much each department is spe
 # Requirements
 * CentOS library install instructions provided.
 * MySQL running on localhost with root password set to 'password', or change in script.
-* employees.sql MySQL db (included) from https://github.com/datacharmer/test_db
+* Follow instructions to import employees.sql MySQL db (included) from https://github.com/datacharmer/test_db
 
 Install required libraries:
     
     yum install MySQL-python
     yum install python-dateutil
-
-Import employees db in to MySQL database:
-    
-    mysql < employees.sql
 
 # To Run
     python salary_report.py
