@@ -33,8 +33,3 @@ def test_print_quarter_report(mysql_mock, capsys):
 def test_run_salary_report(mysql_mock):
     run_salary_report()
     mysql_mock.assert_called_with("SELECT * FROM departments")
-
-test_get_dept_employees()
-test_get_employee_salary()
-test_get_departments()
-test_run_salary_report()
