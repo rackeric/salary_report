@@ -6,10 +6,12 @@ CentOS install instructions provided.
 MySQL running on localhost with root password set to 'password', or change in script.
 
 Install required libraries:
+    
     yum install MySQL-python
     yum install python-dateutil
 
 Import employees db in to MySQL database:
+    
     mysql < employees.sql
 
 # To Run
