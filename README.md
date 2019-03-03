@@ -8,8 +8,7 @@ This script is used to generate a report showing how much each department is spe
 
 Install required libraries:
     
-    yum install MySQL-python
-    yum install python-dateutil
+    yum install -y MySQL-python python-dateutil python2-pip
 
 # To Run
     python salary_report.py
