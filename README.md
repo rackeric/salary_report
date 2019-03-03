@@ -1,5 +1,5 @@
 # salary_report
-a report showing how much each department is spending on employee salaries each quarter.
+This script is used to generate a report showing how much each department is spending on employee salaries each quarter.
 
 # Requirements
 * CentOS library install instructions provided.
@@ -18,8 +18,13 @@ Import employees db in to MySQL database:
 # To Run
     python salary_report.py
 
+Example output:
+    Customer Service 1985-10-01 40000
+    Customer Service 1986-01-01 8019391
+    Customer Service 1986-04-01 10710073
+
 # Performance
-This takes around 35 minutes to run on a Rackspace Public Cloud server using 1 GB General Purpose v1 flavor (1G RAM/1vcpu)
+This takes around 45 minutes to run on a Rackspace Public Cloud server using 1 GB General Purpose v1 flavor (1G RAM/1vcpu)
 
 # To Test
 Test check functions for expected SQL queries and report function for expected output.
