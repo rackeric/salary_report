@@ -23,7 +23,8 @@ Example output:
 This takes around 45 minutes to run on a Rackspace Public Cloud server using 1 GB General Purpose v1 flavor (1G RAM/1vcpu)
 
 # To Test
-Test check functions for expected SQL queries and report function for expected output.
+Tests check functions for expected SQL queries and report function for expected output. Upgrade pip and install needed pip modules for testing.
 
-    pip install pytest unittest mock
+    pip install --upgrade pip
+    pip install pytest mock
     pytest -vvv test_salary_report.py 
