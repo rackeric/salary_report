@@ -19,6 +19,7 @@ Import employees db in to MySQL database:
     python salary_report.py
 
 Example output:
+
     Customer Service 1985-10-01 40000
     Customer Service 1986-01-01 8019391
     Customer Service 1986-04-01 10710073
