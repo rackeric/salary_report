@@ -67,16 +67,16 @@ def department_report(department):
     department_id = department[0]
     department_name = department[1]
 
-    # set local start and end dates
+    # set local start and end dates from global vars
     start = datetime.strptime(start_date, "%Y-%m-%d").date()
     end = datetime.strptime(end_date, "%Y-%m-%d").date()
 
-    # loop from local start to end dates, adding 3 months each iteration for fiscal quarters
+    # loop from local start to end date, adding 3 months each iteration for fiscal quarters
     while start <= end:
         # get 3 month later date
         three_months_later = start + relativedelta(months=+3)
 
-        # print each quarter report per department
+        # print each quarter report for this department
         print_quarter_report(department_id, department_name, start, three_months_later)
         
         # last, set start counter equal to 3 months later
