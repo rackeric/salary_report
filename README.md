@@ -4,7 +4,7 @@ This script is used to generate a report showing how much each department is spe
 # Requirements
 * CentOS library install instructions provided.
 * MySQL running on localhost with root password set to 'password', or change in script.
-* Follow instructions to import employees.sql MySQL db (included) from https://github.com/datacharmer/test_db
+* Follow instructions to import `employees.sql` MySQL db at https://github.com/datacharmer/test_db
 
 Install required libraries:
     
