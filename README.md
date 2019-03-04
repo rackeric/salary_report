@@ -2,9 +2,9 @@
 This script is used to generate a report showing how much each department is spending on employee salaries each quarter.
 
 # Requirements
-* Required libraries install instructions provided for CentOS.
+* Required libraries install instructions provided for CentOS 7 with `epel-release` repo installed.
 * MySQL running on localhost with root password set to 'password', or change db connection string in script.
-* Follow instructions to import `employees.sql` MySQL db at https://github.com/datacharmer/test_db
+* Follow instructions at https://github.com/datacharmer/test_db to import `employees.sql` MySQL db.
 
 Install required libraries:
     
@@ -13,7 +13,7 @@ Install required libraries:
 # To Run
     python salary_report.py
 
-Outputs:
+Output:
 
     [Department Name] [Quarter Start Date] [Total Spent on Salaries for that Quarter]
 
