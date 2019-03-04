@@ -8,6 +8,10 @@
 #         - was employee in department whole quarter
 #
 #   5. print quarter_report list for department after gathering all employee salaries
+#
+#  Usage:   python salary_report.py
+#  Outputs: [Department Name] [Quarter Start Date] [Total Spent on Salaries for that Quarter]
+#
 #      
 #!/usr/bin/python
 import MySQLdb

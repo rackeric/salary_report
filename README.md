@@ -13,6 +13,10 @@ Install required libraries:
 # To Run
     python salary_report.py
 
+Outputs:
+
+    [Department Name] [Quarter Start Date] [Total Spent on Salaries for that Quarter]
+
 Example output:
 
     Customer Service 1985-10-01 40000
