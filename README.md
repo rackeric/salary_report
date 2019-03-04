@@ -32,3 +32,21 @@ Tests check functions for expected SQL queries and report function for expected 
     pip install --upgrade pip
     pip install pytest mock
     pytest -vvv test_salary_report.py 
+
+Example:
+
+    # pytest -vv test_salary_report.py 
+    ===================================== test session starts =====================================
+    platform linux2 -- Python 2.7.5, pytest-4.3.0, py-1.8.0, pluggy-0.9.0 -- /usr/bin/python2
+    cachedir: .pytest_cache
+    rootdir: /root/salary_report, inifile:
+    collected 6 items                                                                             
+    
+    test_salary_report.py::test_get_dept_employees PASSED                                   [ 16%]
+    test_salary_report.py::test_get_employee_salary PASSED                                  [ 33%]
+    test_salary_report.py::test_get_departments PASSED                                      [ 50%]
+    test_salary_report.py::test_department_report PASSED                                    [ 66%]
+    test_salary_report.py::test_print_quarter_report PASSED                                 [ 83%]
+    test_salary_report.py::test_run_salary_report PASSED                                    [100%]
+    
+    ================================== 6 passed in 0.07 seconds ===================================
