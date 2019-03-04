@@ -2,8 +2,8 @@
 This script is used to generate a report showing how much each department is spending on employee salaries each quarter.
 
 # Requirements
-* CentOS library install instructions provided.
-* MySQL running on localhost with root password set to 'password', or change in script.
+* Required libraries install instructions provided for CentOS.
+* MySQL running on localhost with root password set to 'password', or change db connection string in script.
 * Follow instructions to import `employees.sql` MySQL db at https://github.com/datacharmer/test_db
 
 Install required libraries:
@@ -20,7 +20,7 @@ Example output:
     Customer Service 1986-04-01 10710073
 
 # Performance
-This takes around 45 minutes to run on a Rackspace Public Cloud server using 1 GB General Purpose v1 flavor (1G RAM/1vcpu)
+This takes around 46 minutes to run on a Rackspace Public Cloud server using 1 GB General Purpose v1 flavor (1G RAM/1vcpu)
 
 # To Test
 Tests check functions for expected SQL queries and report function for expected output. Upgrade pip and install needed pip modules for testing.

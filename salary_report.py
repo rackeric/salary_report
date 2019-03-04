@@ -15,7 +15,7 @@ from datetime import datetime
 from dateutil.relativedelta import *
 
 # date to start fiscal quarters
-start_date = '1985-10-01'
+start_date = '1985-07-01'
 end_date = '2002-10-01'
 
 # setup mysql connection string
@@ -53,7 +53,8 @@ def print_quarter_report(department_id, department_name, start, three_months_lat
     # iterate through list of employees
     for dept_emp in get_dept_employees(department_id):
         # if employee from_date is before or on local start date AND employee to_date is greater or equal than local end date
-        if (dept_emp[2] <= start and dept_emp[3] >= three_months_later):
+        #if (dept_emp[2] <= start and dept_emp[3] >= three_months_later):
+        if (dept_emp[2] < three_months_later and dept_emp[3] >= three_months_later):
             emp_salary = get_employee_salary(dept_emp[0], start, three_months_later)
             if emp_salary:
                 # add to department salary counter for this quarter
